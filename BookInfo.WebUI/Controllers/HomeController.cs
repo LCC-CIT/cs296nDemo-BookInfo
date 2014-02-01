@@ -11,7 +11,7 @@ using BookInfo.Domain.Abstract;
 // Demonstration of mock repositories and unit testing of controllers
 // for CS296N, Lane Community College
 
-namespace MvcApplication1.Controllers
+namespace BookInfo.WebUI.Controllers
 {
     public class HomeController : Controller
     {
@@ -19,10 +19,13 @@ namespace MvcApplication1.Controllers
 
         public HomeController()     // called by MVC framework
         {
+            // This is the real repository
             //repo = new BookInfoRepository();
-            // Just for integration testing
+
+            // The mock repo is just for integration testing (testing via the browser)
             repo = new FakeBookInfoRepository();
             
+            // Mock data
             List<Author> authors1 = new List<Author>();
             Author author1 = new Author() { Name = "Dostoyevsky", Birthday = new DateTime(1821, 7, 11) };
             authors1.Add(author1);
@@ -50,12 +53,25 @@ namespace MvcApplication1.Controllers
         }
 
         // invoke a view that shows a book from the database
-        // invoke with URL: localhost/Home/ShowBook/?title=Crime%20and%20Punishment
+        // invoke with URL: host/Home/ShowBook/?title=Crime%20and%20Punishment
         public ViewResult ShowBook(string title)
         {
             Book book = repo.GetBook(title);
             return View(book);
         }
 
+        // When a user or a link sends the browser to host/Home/AddBook, the request will be routed here
+        [HttpGet]
+        public ViewResult AddBook()
+        {
+            return View();
+        }
+
+        // When the user submits the AddBook form, the post will be routed here
+        [HttpPost]
+        public ViewResult AddBook(Book bookData)
+        {
+            return View("ShowBook", bookData);
+        }
     }
 }

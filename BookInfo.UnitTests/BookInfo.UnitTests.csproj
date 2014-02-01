@@ -60,6 +60,10 @@
       <Project>{8c8bdfcc-9468-49b4-8ad1-81aa68ef7251}</Project>
       <Name>BookInfo.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BookInfo.WebUI\BookInfo.WebUI.csproj">
+      <Project>{9d8aa8a1-84ed-4800-a324-52c9985da8e9}</Project>
+      <Name>BookInfo.WebUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

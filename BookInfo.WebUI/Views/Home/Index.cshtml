@@ -14,10 +14,16 @@
 <body>
     <div>
         Welcome to the BookInfo demo! <br>
-        This is the home page. <br>
-        <br>
+        This is the home page.
+        <p>
         Use this link to test the ShowBook controller and view: <br>
         @Html.ActionLink("Home/ShowBook/?title=Crime%20and%20Punishment", "ShowBook", new { title = "Crime and Punishment" });
+        </p>
+        <p>
+        Use this link to test the AddBook controller and view: <br>
+        @Html.ActionLink("Home/AddBook", "AddBook");
+        </p>
+
     </div>
 </body>
 </html>

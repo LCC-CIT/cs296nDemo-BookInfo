@@ -16,9 +16,12 @@
     <div>
         Title: @Model.Title <br>
         Published: @Model.Year.Year <br>
-        @foreach (Author a in Model.Authors) 
+        @if(Model.Authors != null)
         {
-            @:Author: @a.Name <br>
+            foreach (Author a in Model.Authors) 
+            {
+                @:Author: @a.Name <br>
+            }
         }
     </div>
 </body>
