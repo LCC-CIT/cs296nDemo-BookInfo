@@ -8,8 +8,9 @@ namespace BookInfo.Domain.Entities
 {
     public class Book
     {
+        public int BookId { get; set; }
         public string Title { get; set; }
-        public List<Author> Authors { get; set; }
+        public virtual List<Author> Authors { get; set; }
         public DateTime Year { get; set; }
     }
 }

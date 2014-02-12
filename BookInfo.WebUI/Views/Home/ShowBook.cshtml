@@ -2,27 +2,17 @@
 @using BookInfo.Domain.Entities
 
 @{
-    Layout = null;
+    //Layout = "~/Views/_GeneralLayout.cshtml";
+    ViewBag.Title = "Show Book";
 }
 
-<!DOCTYPE html>
+Title: @Model.Title <br>
+Published: @Model.Year.Year <br>
+@if(Model.Authors != null)
+{
+    foreach (Author a in Model.Authors) 
+    {
+        @:Author: @a.Name <br>
+    }
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ShowBook</title>
-</head>
-<body>
-    <div>
-        Title: @Model.Title <br>
-        Published: @Model.Year.Year <br>
-        @if(Model.Authors != null)
-        {
-            foreach (Author a in Model.Authors) 
-            {
-                @:Author: @a.Name <br>
-            }
-        }
-    </div>
-</body>
-</html>

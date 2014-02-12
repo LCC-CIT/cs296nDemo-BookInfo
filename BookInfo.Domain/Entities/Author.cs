@@ -8,6 +8,7 @@ namespace BookInfo.Domain.Entities
 {
     public class Author
     {
+        public int AuthorId { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
     }

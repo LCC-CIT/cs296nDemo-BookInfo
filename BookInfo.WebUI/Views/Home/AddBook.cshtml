@@ -1,5 +1,4 @@
 ﻿@model BookInfo.Domain.Entities.Book
-
 @{
     Layout = null;
 }
@@ -12,15 +11,17 @@
     <title>Add Book</title>
 </head>
 <body>
-    @using (Html.BeginForm()) 
-    {
-        <p>Book Title:    @Html.TextBoxFor(x => x.Title) </p>
-        
-        // We won't add the author info this time. We'll wait
-        // until we learn how to use View Models
 
-        <p>Date published: @Html.EditorFor(x => x.Year)  (MM/DD/YYYY)</p> 
-        <input type="submit" value="Submit Book Info" />
-    }
+
+@using (Html.BeginForm()) 
+{
+    <p>Book Title:    @Html.TextBoxFor(x => x.Title) </p>
+        
+    // We won't add the author info this time. We'll wait
+    // until we learn how to use View Models
+
+    <p>Date published: @Html.EditorFor(x => x.Year)  (MM/DD/YYYY)</p> 
+    <input type="submit" value="Submit Book Info" />
+}
 </body>
-</html>
+    </html>

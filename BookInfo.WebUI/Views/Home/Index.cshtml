@@ -1,29 +1,16 @@
-﻿@model BookInfo.Domain.Entities.Book
-
-@{
-    Layout = null;
+﻿@{
+    //Layout = "~/Views/_GeneralLayout.cshtml";
+    ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
+Welcome to the BookInfo demo! <br>
+This is the home page.
+<p>
+Use this link to test the ShowBook controller and view: <br>
+@Html.ActionLink("Home/ShowBook/?title=Crime%20and%20Punishment", "ShowBook", new { title = "Crime and Punishment" });
+</p>
+<p>
+Use this link to test the AddBook controller and view: <br>
+@Html.ActionLink("Home/AddBook", "AddBook");
+</p>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        Welcome to the BookInfo demo! <br>
-        This is the home page.
-        <p>
-        Use this link to test the ShowBook controller and view: <br>
-        @Html.ActionLink("Home/ShowBook/?title=Crime%20and%20Punishment", "ShowBook", new { title = "Crime and Punishment" });
-        </p>
-        <p>
-        Use this link to test the AddBook controller and view: <br>
-        @Html.ActionLink("Home/AddBook", "AddBook");
-        </p>
-
-    </div>
-</body>
-</html>

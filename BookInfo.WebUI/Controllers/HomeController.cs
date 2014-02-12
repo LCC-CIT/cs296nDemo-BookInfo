@@ -20,11 +20,11 @@ namespace BookInfo.WebUI.Controllers
         public HomeController()     // called by MVC framework
         {
             // This is the real repository
-            //repo = new BookInfoRepository();
+            repo = new BookInfoRepository();
 
             // The mock repo is just for integration testing (testing via the browser)
-            repo = new FakeBookInfoRepository();
-            
+            //repo = new FakeBookInfoRepository();
+            /*
             // Mock data
             List<Author> authors1 = new List<Author>();
             Author author1 = new Author() { Name = "Dostoyevsky", Birthday = new DateTime(1821, 7, 11) };
@@ -37,6 +37,15 @@ namespace BookInfo.WebUI.Controllers
             authors2.Add(author2);
             Book book2 = new Book(){Title = "Cat in the Hat", Authors = authors2, Year = new DateTime(1957, 1, 1)};
             repo.AddBook(book2);
+            */
+            List<Author> authors3 = new List<Author>();
+            Author author3 = new Author() { Name = "Carl Skeel", Birthday = new DateTime(1904, 3, 2) };
+            Author author4 = new Author() { Name = "Michelle P.", Birthday = new DateTime(1905, 3, 2) };
+            authors3.Add(author3);
+            authors3.Add(author4);
+            Book book3 = new Book() { Title = "The Joys of MVC", Authors = authors3, Year = new DateTime(2014, 1, 1) };
+            repo.AddBook(book3);
+
         }
 
         public HomeController(IBook bookRepo)   // called from unit test
@@ -71,6 +80,7 @@ namespace BookInfo.WebUI.Controllers
         [HttpPost]
         public ViewResult AddBook(Book bookData)
         {
+            repo.AddBook(bookData);
             return View("ShowBook", bookData);
         }
     }
