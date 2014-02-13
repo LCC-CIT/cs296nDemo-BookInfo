@@ -51,11 +51,42 @@
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Concrete\FakeBookInfoRepository.cs" />
+    <Compile Include="Migrations\201402040145432_InitialCreate.cs" />
+    <Compile Include="Migrations\201402040145432_InitialCreate.Designer.cs">
+      <DependentUpon>201402040145432_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402130026256_AddPublisher.cs" />
+    <Compile Include="Migrations\201402130026256_AddPublisher.Designer.cs">
+      <DependentUpon>201402130026256_AddPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402130033594_RequireTitle.cs" />
+    <Compile Include="Migrations\201402130033594_RequireTitle.Designer.cs">
+      <DependentUpon>201402130033594_RequireTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201402130055498_DeletePublisher.cs" />
+    <Compile Include="Migrations\201402130055498_DeletePublisher.Designer.cs">
+      <DependentUpon>201402130055498_DeletePublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201402040145432_InitialCreate.resx">
+      <DependentUpon>201402040145432_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402130026256_AddPublisher.resx">
+      <DependentUpon>201402130026256_AddPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402130033594_RequireTitle.resx">
+      <DependentUpon>201402130033594_RequireTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402130055498_DeletePublisher.resx">
+      <DependentUpon>201402130055498_DeletePublisher.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

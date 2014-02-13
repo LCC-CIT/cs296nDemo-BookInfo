@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BookInfo.Domain.Entities;
 using BookInfo.Domain.Concrete;
 using BookInfo.Domain.Abstract;
+using BookInfo.WebUI.Models;
 
 // Written by Brian Bird, 1/27/14
 // Demonstration of mock repositories and unit testing of controllers
@@ -58,7 +59,23 @@ namespace BookInfo.WebUI.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            // TODO: Add Linq queries to get number of authors and books
+            int numAuthors = 25;
+            int numTitles = 100;
+            Book book = repo.GetBook("Cat in the Hat");
+
+            var frontPageInfo = new FrontPageViewModel()
+                {
+                    Stats = new StatisticsViewModel() { Authors = numAuthors, Titles = numTitles },
+                    TheBook = book
+                };
+
+
+            //ViewBag.Authors = numAuthors;
+            //ViewBag.Titles = numTitles;
+            //var stats = new StatisticsViewModel() { Authors = numAuthors, Titles = numTitles };
+
+            return View(frontPageInfo);
         }
 
         // invoke a view that shows a book from the database

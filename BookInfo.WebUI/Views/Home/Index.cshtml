@@ -1,10 +1,16 @@
-﻿@{
+﻿@model BookInfo.WebUI.Models.FrontPageViewModel
+@{
     //Layout = "~/Views/_GeneralLayout.cshtml";
     ViewBag.Title = "Home Page";
 }
 
 Welcome to the BookInfo demo! <br>
-This is the home page.
+
+This is the home page.<br />
+There are @Model.Stats.Authors authors and @Model.Stats.Titles book titles in this web site's database
+<br />
+Book of the day: @Model.TheBook.Title
+
 <p>
 Use this link to test the ShowBook controller and view: <br>
 @Html.ActionLink("Home/ShowBook/?title=Crime%20and%20Punishment", "ShowBook", new { title = "Crime and Punishment" });
