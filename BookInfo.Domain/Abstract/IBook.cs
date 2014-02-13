@@ -10,8 +10,8 @@ namespace BookInfo.Domain.Abstract
     public interface IBook
     {
         void AddBook(Book book);
-        Book GetBook(string title);
-        IQueryable<Book> GetBooks(Author author);
+        Book GetBookByTitle(string title);
+        IQueryable<Book> GetBooks();
         void DeleteBook(string title);
     }
 }

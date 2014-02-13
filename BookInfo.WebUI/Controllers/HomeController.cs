@@ -38,7 +38,7 @@ namespace BookInfo.WebUI.Controllers
             authors2.Add(author2);
             Book book2 = new Book(){Title = "Cat in the Hat", Authors = authors2, Year = new DateTime(1957, 1, 1)};
             repo.AddBook(book2);
-            */
+            
             List<Author> authors3 = new List<Author>();
             Author author3 = new Author() { Name = "Carl Skeel", Birthday = new DateTime(1904, 3, 2) };
             Author author4 = new Author() { Name = "Michelle P.", Birthday = new DateTime(1905, 3, 2) };
@@ -46,7 +46,7 @@ namespace BookInfo.WebUI.Controllers
             authors3.Add(author4);
             Book book3 = new Book() { Title = "The Joys of MVC", Authors = authors3, Year = new DateTime(2014, 1, 1) };
             repo.AddBook(book3);
-
+            */
         }
 
         public HomeController(IBook bookRepo)   // called from unit test
@@ -59,17 +59,26 @@ namespace BookInfo.WebUI.Controllers
 
         public ActionResult Index()
         {
-            // TODO: Add Linq queries to get number of authors and books
-            int numAuthors = 25;
-            int numTitles = 100;
-            Book book = repo.GetBook("Cat in the Hat");
+            var repo = new BookInfoRepository();
+
+            var numAuthors = (from b in repo.GetBooks()
+                              select b.Authors
+                                  into authors
+                                  from a in authors
+                                  group a by a.Name).Count();
+
+            int numTitles = repo.GetBooks()
+                                .GroupBy(b => b.Title)
+                                .Count();
+
+            Book book = repo.GetBookByTitle("Cat in the Hat");
 
             var frontPageInfo = new FrontPageViewModel()
                 {
-                    Stats = new StatisticsViewModel() { Authors = numAuthors, Titles = numTitles },
+                    Stats = new StatisticsViewModel() 
+                        { Authors = numAuthors, Titles = numTitles },
                     TheBook = book
                 };
-
 
             //ViewBag.Authors = numAuthors;
             //ViewBag.Titles = numTitles;
@@ -82,7 +91,7 @@ namespace BookInfo.WebUI.Controllers
         // invoke with URL: host/Home/ShowBook/?title=Crime%20and%20Punishment
         public ViewResult ShowBook(string title)
         {
-            Book book = repo.GetBook(title);
+            Book book = repo.GetBookByTitle(title);
             return View(book);
         }
 

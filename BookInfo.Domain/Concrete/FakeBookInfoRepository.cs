@@ -19,14 +19,14 @@ namespace BookInfo.Domain.Concrete
  	        books.Add(book);
         }
 
-        public Book GetBook(string title)
+        public Book GetBookByTitle(string title)
         {
             return (from b in books
                    where title == b.Title
                    select b).FirstOrDefault<Book>();
         }
 
-        public IQueryable<Entities.Book> GetBooks(Entities.Author author)
+        public IQueryable<Entities.Book> GetBooks()
         {
  	        throw new NotImplementedException();
         }

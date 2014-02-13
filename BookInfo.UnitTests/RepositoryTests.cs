@@ -42,7 +42,7 @@ namespace BookInfo.UnitTests
             target.AddBook(book3);
 
             //Act
-            Book retrievedBook = target.GetBook("War and Peace");
+            Book retrievedBook = target.GetBookByTitle("War and Peace");
 
             // Assert
             Assert.AreSame(retrievedBook, book2);

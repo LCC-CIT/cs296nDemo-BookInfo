@@ -19,7 +19,7 @@ namespace BookInfo.Domain.Concrete
 
         }
 
-        public Entities.Book GetBook(string title)
+        public Entities.Book GetBookByTitle(string title)
         {
             var db = new BookInfoDbContext();
             return (from b in db.Books
@@ -27,9 +27,10 @@ namespace BookInfo.Domain.Concrete
                     select b).FirstOrDefault();
         }
 
-        public IQueryable<Entities.Book> GetBooks(Entities.Author author)
+        public IQueryable<Entities.Book> GetBooks()
         {
-            throw new NotImplementedException();
+            var db = new BookInfoDbContext();
+            return db.Books;
         }
 
         public void DeleteBook(string title)
